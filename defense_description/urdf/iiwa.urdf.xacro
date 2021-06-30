@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<robot name="iiwa7" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find iiwa_description)/urdf/materials.xacro" />
+  <xacro:include filename="$(find iiwa_description)/urdf/iiwa7.xacro"/>
+
+  <xacro:arg name="hardware_interface" default="PositionJointInterface"/>
+  <xacro:arg name="robot_name" default="iiwa"/>
+  <xacro:arg name="origin_xyz" default="0 0 0"/>
+  <xacro:arg name="origin_rpy" default="0 0 0"/>
+
+  <link name="world"/>
+
+  <xacro:iiwa7 hardware_interface="$(arg hardware_interface)" robot_name="$(arg robot_name)" parent="world">
+    <origin xyz="$(arg origin_xyz)" rpy="$(arg origin_rpy)" />
+  </xacro:iiwa7>
+
+  <link name="table_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://defense_description/meshes/Table.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://defense_description/meshes/Table.dae" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="table_joint" type="fixed">
+    <parent link="world" />
+    <child link="table_link" />
+  </joint>
+
+  <link name="env_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://defense_description/meshes/Env.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://defense_description/meshes/Env.dae" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="env_joint" type="fixed">
+    <parent link="world" />
+    <child link="env_link" />
+  </joint>
+
+  <link name="grip_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://defense_description/meshes/HandESmall.dae" />
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="grip_joint" type="fixed">
+    <parent link="iiwa_link_ee" />
+    <child link="grip_link" />
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="tweeze_tips" />
+
+  <joint name="tweeze_joint" type="fixed">
+    <parent link="grip_link" />
+    <child link="tweeze_tips" />
+    <origin xyz="-0.01768 0.00131 0.20735" rpy="0 2.87979 0"/>
+  </joint>
+
+</robot>

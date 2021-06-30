@@ -1,0 +1,22 @@
+<launch>
+    <arg name="hardware_interface" default="PositionJointInterface"/>
+    <arg name="robot_name" default="iiwa"/>
+    <arg name="model" default="iiwa7"/>
+
+    <include file="$(find defense_description)/launch/description.launch" />
+
+    <group ns="$(arg robot_name)">
+        <include file="$(find defense_bringup)/launch/iiwa_control.launch">
+            <arg name="hardware_interface" value="$(arg hardware_interface)" />
+            <arg name="controllers" value="joint_state_controller $(arg hardware_interface)_trajectory_controller" />
+            <arg name="robot_name" value="$(arg robot_name)" />
+            <arg name="model" value="$(arg model)" />
+        </include>
+
+        <include file="$(find iiwa_hw)/launch/iiwa_hw.launch" >
+            <arg name="hardware_interface" value="$(arg hardware_interface)" />
+        </include>
+    </group>
+
+    <include file="$(find defense_moveit_config)/launch/move_group.launch" />
+</launch>

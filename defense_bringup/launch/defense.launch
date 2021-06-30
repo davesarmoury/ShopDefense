@@ -1,0 +1,4 @@
+<launch>
+  <include file="$(find defense_bringup)/launch/iiwa_bringup.launch" />
+  <include file="$(find defense_bringup)/launch/gripper.launch" />
+</launch>

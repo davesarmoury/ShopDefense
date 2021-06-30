@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="robotiq_2f_gripper_control" type="Robotiq2FGripperRtuNode.py" args="/dev/robotiq_gripper" respawn="true" name="grip_driver" />
+</launch>

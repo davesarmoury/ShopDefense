@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>defense_description</name>
+  <version>0.0.0</version>
+  <description>The defense_description package</description>
+
+  <maintainer email="davesarmoury@gmail.com">Dave Niewinski</maintainer>
+
+  <license>CC-BY-3</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>iiwa_description</exec_depend>
+  <exec_depend>xacro</exec_depend>
+
+  <test_depend>roslaunch</test_depend>
+</package>
