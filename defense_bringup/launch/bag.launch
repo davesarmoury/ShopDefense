@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="rosbag" type="record" name="rosbag_recorder" args="record -o /home/dniewinski/Desktop -a" />
+</launch>

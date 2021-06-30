@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="base_frame"           default="zed_link" />
+
+    <arg name="camera_name"           default="zed2" /> <!-- The name you want -->
+    <arg name="camera_model"          default="zed2" /> <!-- 'zed' or 'zedm' or 'zed2' -->
+    <arg name="node_name"             default="zed_node" />
+
+    <arg name="camera_id"             default="0" />
+    <arg name="gpu_id"                default="-1" />
+
+    <node name="$(arg node_name)" pkg="zed_wrapper" type="zed_wrapper_node" output="screen" required="true">
+        <rosparam file="$(find zed_wrapper)/params/common.yaml" command="load" />
+        <rosparam file="$(find defense_bringup)/params/zed2.yaml" command="load" />
+
+        <!-- Camera name -->
+        <param name="general/camera_name"               value="$(arg camera_name)" />
+
+        <!-- Base frame -->
+        <param name="general/base_frame"                value="$(arg base_frame)" />
+
+        <!-- Camera ID -->
+        <param name="general/zed_id"                    value="$(arg camera_id)" />
+
+        <!-- GPU ID -->
+        <param name="general/gpu_id"                    value="$(arg gpu_id)" />
+    </node>
+</launch>

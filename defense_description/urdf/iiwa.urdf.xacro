@@ -2,6 +2,7 @@
 <robot name="iiwa7" xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:include filename="$(find iiwa_description)/urdf/materials.xacro" />
   <xacro:include filename="$(find iiwa_description)/urdf/iiwa7.xacro"/>
+  <xacro:include filename="$(find zed_wrapper)/urdf/zed_descr.urdf.xacro"/>
 
   <xacro:arg name="hardware_interface" default="PositionJointInterface"/>
   <xacro:arg name="robot_name" default="iiwa"/>
@@ -70,6 +71,12 @@
     <parent link="grip_link" />
     <child link="tweeze_tips" />
     <origin xyz="-0.01768 0.00131 0.20735" rpy="0 2.87979 0"/>
+  </joint>
+
+  <joint name="zed_joint" type="fixed">
+    <parent link="world" />
+    <child link="zed_link" />
+    <origin xyz="-0.45 0 1.3716" rpy="0 0.523599 0"/>
   </joint>
 
 </robot>
