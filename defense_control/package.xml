@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>defense_control</name>
+  <version>0.0.0</version>
+  <description>The defense_control package</description>
+
+  <maintainer email="davesarmoury@clearpathrobotics.com">Dave Niewinski</maintainer>
+
+  <license>CC-BY-3</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>trac_ik_python</exec_depend>
+  <exec_depend>trajectory_msgs</exec_depend>
+
+</package>

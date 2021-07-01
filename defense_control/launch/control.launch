@@ -1,0 +1,9 @@
+<launch>
+  <node name="herman_controller" pkg="herman_date_night" type="herman_controller" output="screen">
+    <remap from="out" to="/scaled_pos_joint_traj_controller/command"/>
+    <remap from="in" to="/controller/pose_throttle"/>
+  </node>
+
+  <node pkg="topic_tools" type="throttle" name="controller_throttle" args="messages /controller/pose 4.0" />
+
+</launch>

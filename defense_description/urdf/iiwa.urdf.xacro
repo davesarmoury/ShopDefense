@@ -65,18 +65,17 @@
     <origin xyz="0 0 0" rpy="0 0 0"/>
   </joint>
 
-  <link name="tweeze_tips" />
-
-  <joint name="tweeze_joint" type="fixed">
-    <parent link="grip_link" />
-    <child link="tweeze_tips" />
-    <origin xyz="-0.01768 0.00131 0.20735" rpy="0 2.87979 0"/>
-  </joint>
-
   <joint name="zed_joint" type="fixed">
     <parent link="world" />
     <child link="zed_link" />
     <origin xyz="-0.45 0 1.3716" rpy="0 0.523599 0"/>
+  </joint>
+
+  <link name="just_the_tip" />
+  <joint name="tip_joint" type="fixed">
+    <parent link="iiwa_link_ee" />
+    <child link="just_the_tip" />
+    <origin xyz="0 0 0" rpy="0 0 0"/>
   </joint>
 
 </robot>
