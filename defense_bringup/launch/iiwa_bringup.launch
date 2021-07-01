@@ -17,6 +17,4 @@
             <arg name="hardware_interface" value="$(arg hardware_interface)" />
         </include>
     </group>
-
-    <include file="$(find defense_moveit_config)/launch/move_group.launch" />
 </launch>
