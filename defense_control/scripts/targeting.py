@@ -31,8 +31,8 @@ def det_callback(msg):
                          "spray_origin_link")
 
         horizontal_distance = math.sqrt(translate[0]*translate[0] + translate[1]*translate[1])
-        yaw = math.atan2(translate[1], translate[0]) - 0.05
-        pitch = math.atan2(translate[2],horizontal_distance) * -1.0 - 0.2
+        yaw = math.atan2(translate[1], translate[0])
+        pitch = math.atan2(translate[2],horizontal_distance) * -1.0
         h_mtx = compose_matrix(translate=[HEAD_DISTANCE, 0, 0])
         t_mtx = compose_matrix(angles=[0,pitch,yaw])
         t_mtx = numpy.matmul(t_mtx, h_mtx)
