@@ -51,31 +51,17 @@
     <child link="env_link" />
   </joint>
 
-  <link name="grip_link">
-    <visual>
-      <geometry>
-        <mesh filename="package://defense_description/meshes/HandESmall.dae" />
-      </geometry>
-    </visual>
-  </link>
-
-  <joint name="grip_joint" type="fixed">
-    <parent link="iiwa_link_ee" />
-    <child link="grip_link" />
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-  </joint>
-
   <joint name="zed_joint" type="fixed">
     <parent link="world" />
     <child link="zed_link" />
-    <origin xyz="-0.45 0 1.3716" rpy="0 0.523599 0"/>
+    <origin xyz="-0.4826 -0.2 1.3716" rpy="0 0.523599 0"/>
   </joint>
 
   <link name="just_the_tip" />
   <joint name="tip_joint" type="fixed">
     <parent link="iiwa_link_ee" />
     <child link="just_the_tip" />
-    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <origin xyz="0 0 0.2" rpy="0 3.14159 0"/>
   </joint>
 
 </robot>

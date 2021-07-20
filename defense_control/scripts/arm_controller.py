@@ -28,7 +28,8 @@ def controller_callback(msg):
 
         tp = JointTrajectoryPoint()
         tp.positions = list(ik)
-        tp.time_from_start = rospy.Duration(nsecs=500000000)
+        tp.time_from_start = rospy.Duration(nsecs=700000000)
+        #tp.time_from_start = rospy.Duration(secs=1)
         jt.points = [tp]
 
         jt.header.stamp = rospy.Time.now()
@@ -38,13 +39,15 @@ def controller_callback(msg):
 
 def main():
     global ik_solver, pub
-    rospy.init_node('joint_driver', anonymous=True)
+    rospy.init_node('arm_driver', anonymous=True)
 
-    ik_solver = IK("iiwa_link_0", "just_the_tip", timeout=0.05, solve_type="Distance")
+    ik_solver = IK("world", "just_the_tip", timeout=0.05, solve_type="Distance")
     ik_solver.set_joint_limits(limits_lower, limits_upper)
 
-    pub = rospy.Publisher('out', JointTrajectory, queue_size=10)
+    pub = rospy.Publisher('/iiwa/PositionJointInterface_trajectory_controller/command', JointTrajectory, queue_size=10)
 
+    rospy.loginfo("Starting")
+    rospy.sleep(1.0)
     ##########################################
     jt = JointTrajectory()
     jt.joint_names = list(ik_solver.joint_names)
@@ -55,11 +58,15 @@ def main():
     jt.points = [tp]
 
     jt.header.stamp = rospy.Time.now()
+    rospy.logwarn("Homing")
     pub.publish(jt)
+
     rospy.sleep(5.0)
     ##########################################
 
-    rospy.Subscriber('in', PoseStamped, controller_callback)
+    rospy.logwarn("Done")
+
+    rospy.Subscriber('/arm_pos_throttle', PoseStamped, controller_callback)
 
     rospy.spin()
 

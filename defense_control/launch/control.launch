@@ -1,9 +1,7 @@
 <launch>
-  <node name="herman_controller" pkg="herman_date_night" type="herman_controller" output="screen">
-    <remap from="out" to="/scaled_pos_joint_traj_controller/command"/>
-    <remap from="in" to="/controller/pose_throttle"/>
-  </node>
+  <node name="arm_control" pkg="defense_control" type="arm_controller.py" output="screen" />
+  <node name="tergeting" pkg="defense_control" type="targeting.py" output="screen" />
 
-  <node pkg="topic_tools" type="throttle" name="controller_throttle" args="messages /controller/pose 4.0" />
+  <node pkg="topic_tools" type="throttle" name="controller_throttle" args="messages /arm_pos 2.0" />
 
 </launch>
