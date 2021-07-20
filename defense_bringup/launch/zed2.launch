@@ -10,7 +10,7 @@
     <arg name="gpu_id"                default="-1" />
 
     <node name="$(arg node_name)" pkg="zed_wrapper" type="zed_wrapper_node" output="screen" required="true">
-        <rosparam file="$(find zed_wrapper)/params/common.yaml" command="load" />
+        <rosparam file="$(find defense_bringup)/params/common.yaml" command="load" />
         <rosparam file="$(find defense_bringup)/params/zed2.yaml" command="load" />
 
         <!-- Camera name -->
